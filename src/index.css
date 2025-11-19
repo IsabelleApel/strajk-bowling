@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --font-body: "Work Sans", sans-serif;
+  --font-heading: "Bebas Neue", sans-serif;
+  --color-red: #EC315A;
+  --color-blue: #441D81;
+  --color-black: #222222;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
