@@ -13,7 +13,7 @@ export default function ShoesForm() {
     }, [bowlers, setValue])
 
     return (
-        <section>
+        <section className="form">
                 <h2>Shoes</h2>
                 {Array.from({ length: bowlers || 0}).map((_, i) => (
                     <div key={i} className="input-container">

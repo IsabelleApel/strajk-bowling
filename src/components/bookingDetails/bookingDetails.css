@@ -1,0 +1,38 @@
+.confirmation {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation > h2 {
+    font-family: var(--font-heading);
+    color: var(--color-blue);
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 1.5rem;
+}
+
+.field-container > .detail {
+    height: 3rem;
+    border: 1px solid var(--color-blue);
+    border-radius: 3px;
+    width: 90%;
+    font-size: 1.3rem;
+    padding: 0 .5rem;
+    background: none;
+    display: flex;
+    align-items: center;
+}
+
+.field-container > .detail-total{
+    border: 1px solid var(--color-red);
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-red);
+    margin: 2rem 0 1rem;
+}
+
+.total-text {
+    font-weight: 600;
+}

@@ -17,10 +17,10 @@ export default function Booking() {
             <>
             <Header />
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                <form className="booking-form" onSubmit={methods.handleSubmit(onSubmit)}>
                     <InfoForm />
                     <ShoesForm />
-                    <button type="submit">striiiike</button>
+                    <button className="submit-btn" type="submit">striiiike</button>
                 </form>
             </FormProvider>
             </>

@@ -1,9 +1,12 @@
-import Booking from './pages/booking/Booking'
+import { BrowserRouter } from "react-router-dom"
+import AppRoutes from "./routes/AppRoutes"
 
 function App() {
 
   return (
-    <Booking />
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 
