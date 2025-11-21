@@ -4,7 +4,7 @@ import './infoForm.css'
 export default function InfoForm() {
     const { register } = useFormContext();
     return (
-        <section className="info-form">
+        <section className="form">
                 <h2>When, what & who</h2>
                 <div className="when-container">
                     <div className="field-container">
@@ -19,7 +19,7 @@ export default function InfoForm() {
 
                 <div className="field-container field-container--wide">
                     <label>NUMBER OF AWSOME BOWLERS</label>
-                    <input className="wide-input" type="number" {...register("bowlers", {valueAsNumber: true})}/>
+                    <input className="wide-input" type="number" {...register("people", {valueAsNumber: true})}/>
                 </div>
                 <div className="field-container field-container--wide">
                     <label>NUMBER OF LANES</label>
