@@ -3,27 +3,34 @@ import { useEffect } from "react";
 import type { BookingForm } from "../../schemas/bookingSchema";
 
 export default function ShoesForm() {
-    const { control, setValue, register, getValues } = useFormContext<BookingForm>();
+    const { control, setValue, register, formState: {errors} } = useFormContext<BookingForm>();
     const bowlers = useWatch({ control, name: "people"});
 
-useEffect(() => {
-    const current = getValues("shoes");
-
-    const newArray = Array.from({ length: bowlers || 0 }, (_, i) => {
-        return current?.[i] || { size: 40 };
-    });
-
-    setValue("shoes", newArray);
-}, [bowlers, getValues, setValue]);
+    useEffect(() => {
+        setValue(
+            "shoes", 
+            Array.from({ length: bowlers || 0}, () => ({ size: 40 })))
+    }, [bowlers, setValue])
 
     return (
         <section className="form">
                 <h2>Shoes</h2>
                 {Array.from({ length: bowlers || 0}).map((_, i) => (
-                    <div key={i} className="field-container">
-                        <label>Shoe Size / Person {i + 1}</label>
-                        <input type="number" {...register(`shoes.${i}.size`, {valueAsNumber: true})} />
-                    </div>
+        <div key={i} className="field-container">
+            <label>Shoe Size / Person {i + 1}</label>
+            <input 
+                type="number" 
+                {...register(`shoes.${i}.size`, { valueAsNumber: true })} 
+            />
+            {errors.shoes?.[i]?.size?.message && (
+                <p className="error">
+                    {errors.shoes[i].size.message === "Invalid input: expected number, received NaN"
+                        ? `Storlek för person ${i + 1} måste uppges`
+                        : (errors.shoes[i].size.message as string)
+                    }
+                </p>
+            )}
+        </div>
                 ))}
         </section>
     )

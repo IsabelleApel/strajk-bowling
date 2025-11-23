@@ -1,0 +1,6 @@
+.no-booking {
+    align-self: center;
+    margin-top: 40%;
+    font-size: 1.8rem;
+    color: var(--color-red);
+}

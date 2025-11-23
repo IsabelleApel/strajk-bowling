@@ -13,13 +13,14 @@ export default function Booking() {
 
     const methods = useForm<BookingForm>({
         resolver: zodResolver(createBookingSchema),
-        defaultValues: {
-           date: "",
-           time: "",
-           people: 1,
-           lanes: 1,
-           shoes: [{ size: 40 }] 
-        },
+        mode: "onTouched",
+          defaultValues: {
+            date: "",
+            time: "",
+            people: 0,
+            lanes: 0,
+            shoes: [{ size: 40 }]
+  }
     });
     
     const onSubmit = async (data: BookingForm) => {
@@ -34,6 +35,8 @@ export default function Booking() {
             };
 
             const bookingResponse = await sendBooking(bookingRequest);
+
+            console.log(bookingResponse)
 
             navigate("/confirmation", {
                 state: {booking: bookingResponse}
@@ -51,8 +54,8 @@ export default function Booking() {
             <Header />
             <FormProvider {...methods}>
                 <form className="booking-form" onSubmit={methods.handleSubmit(onSubmit, (errors) => {
-        console.log("FORM ERROR:", errors)
-      })}>
+                    console.log("FORM ERROR:", errors)
+                })}>
                     <InfoForm />
                     <ShoesForm />
                     <button className="submit-btn" type="submit">striiiike</button>

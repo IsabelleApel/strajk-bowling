@@ -52,3 +52,6 @@
     text-transform: uppercase;
 }
 
+.error{
+    color: var(--color-red);
+}
