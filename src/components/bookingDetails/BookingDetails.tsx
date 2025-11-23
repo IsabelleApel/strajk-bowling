@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import './bookingDetails.css'
 
 interface Props {
@@ -9,12 +10,21 @@ interface Props {
 }
 
 export default function BookingDetails({ when, people, lanes, id, price }: Props) {
+    const navigate = useNavigate();
+
+    const date = new Date(when);
+    const formattedWhen = `${date.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" })}, ${date.toLocaleDateString("sv-SE", { day: "numeric", month: "short" })}`;
+
+    const handleOnClick = () => {
+        navigate('/')
+    }
+
     return (
         <section className="confirmation">
             <h2>booking details</h2>
             <div className="field-container">
                 <label>when</label>
-                <p className='detail'>{when}</p>
+                <p className='detail'>{formattedWhen}</p>
             </div>
             <div className="field-container">
                 <label>who</label>
@@ -26,7 +36,7 @@ export default function BookingDetails({ when, people, lanes, id, price }: Props
             </div>
             <div className="field-container">
                 <label>booking number</label>
-                <p className='detail'>{id}</p>
+                <p className='detail'>{id.split('-')[0]}</p>
             </div>
             <div className="field-container">
                 <span className="detail detail-total">
@@ -34,7 +44,7 @@ export default function BookingDetails({ when, people, lanes, id, price }: Props
                     <p>{price}kr</p>
                 </span>
             </div>
-            <button className='submit-btn'>let´s go</button>
+            <button onClick={handleOnClick} className='submit-btn'>sweet, let´s go!</button>
         </section>
     )
 }
